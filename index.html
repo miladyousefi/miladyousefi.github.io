@@ -3,537 +3,580 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Milad Yousefi — CV</title>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Fira+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <title>Milad Yousefi - Curriculum Vitae</title>
     <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
         :root {
-            --black: #0a0a0a;
-            --dark: #1a1a1a;
-            --mid: #444;
-            --light: #777;
-            --rule: #ccc;
-            --page: #fff;
-            --serif: 'EB Garamond', Georgia, serif;
-            --mono: 'Fira Mono', 'Courier New', monospace;
+            --primary-color: #1a365d;
+            --secondary-color: #2b6cb0;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            font-family: var(--serif);
-            background: #e8e6e1;
-            color: var(--black);
-            padding: 40px 20px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.4;
+            background-color: #525659;
+            padding: 40px 0;
         }
 
-        /* ---------- PAGE SHELL ---------- */
-        .cv {
-            background: var(--page);
-            max-width: 210mm;
-            margin: 0 auto;
-            padding: 22mm 20mm 22mm 20mm;
-            box-shadow: 0 2px 40px rgba(0,0,0,.18);
+        /* Forces pages to be rigid, independent blocks */
+        .page {
+            background: white;
+            width: 210mm;
+            height: 297mm;
+            margin: 0 auto 40px auto;
+            padding: 20mm;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            position: relative;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* ---------- HEADER ---------- */
+        .page:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Header Elements */
         header {
-            border-bottom: 2.5px solid var(--black);
-            padding-bottom: 14px;
-            margin-bottom: 20px;
-        }
-
-        header h1 {
-            font-family: var(--serif);
-            font-weight: 700;
-            font-size: 2.35rem;
-            letter-spacing: .02em;
-            line-height: 1.1;
-            color: var(--black);
-        }
-
-        header .title-line {
-            font-size: .88rem;
-            font-family: var(--mono);
-            letter-spacing: .13em;
-            text-transform: uppercase;
-            color: var(--mid);
-            margin-top: 5px;
-            margin-bottom: 10px;
-        }
-
-        .contact-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px 20px;
-            font-size: .82rem;
-            font-family: var(--mono);
-            color: var(--mid);
-        }
-
-        .contact-row a {
-            color: var(--mid);
-            text-decoration: none;
-            border-bottom: 1px solid var(--rule);
-        }
-
-        .contact-row a:hover { border-color: var(--black); color: var(--black); }
-
-        /* ---------- SECTION ---------- */
-        section { margin-bottom: 20px; }
-
-        .section-head {
-            font-family: var(--mono);
-            font-size: .72rem;
-            letter-spacing: .2em;
-            text-transform: uppercase;
-            color: var(--mid);
-            border-bottom: 1px solid var(--rule);
-            padding-bottom: 4px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
             margin-bottom: 12px;
+            flex-shrink: 0;
         }
 
-        /* ---------- ABOUT ---------- */
-        .about p {
-            font-size: .93rem;
-            line-height: 1.72;
-            color: var(--dark);
-        }
-
-        .about p + p { margin-top: 8px; }
-
-        /* ---------- INTERESTS GRID ---------- */
-        .interests-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px 24px;
-        }
-
-        .interest-block h4 {
-            font-size: .9rem;
-            font-weight: 600;
-            font-style: italic;
-            margin-bottom: 2px;
-        }
-
-        .interest-block p {
-            font-size: .82rem;
-            color: var(--mid);
-            line-height: 1.5;
-        }
-
-        /* ---------- EDUCATION ---------- */
-        .edu-item { margin-bottom: 14px; }
-
-        .edu-item .degree {
-            font-size: 1rem;
-            font-weight: 600;
-            line-height: 1.3;
-        }
-
-        .edu-item .institution-line {
-            font-size: .85rem;
-            color: var(--mid);
-            margin-top: 2px;
-        }
-
-        .edu-item .details {
-            font-size: .83rem;
-            color: var(--dark);
-            line-height: 1.6;
-            margin-top: 5px;
-        }
-
-        .edu-item .details em { font-style: italic; color: var(--mid); }
-
-        /* ---------- EXPERIENCE ---------- */
-        .exp-item { margin-bottom: 14px; }
-
-        .exp-item .role {
-            font-size: .97rem;
-            font-weight: 600;
-            line-height: 1.3;
-        }
-
-        .exp-item .where-when {
-            font-size: .83rem;
-            color: var(--mid);
-            margin-top: 2px;
-            margin-bottom: 5px;
-        }
-
-        .exp-item ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .exp-item ul li {
-            font-size: .84rem;
-            line-height: 1.6;
-            padding-left: 1.1em;
-            position: relative;
-            color: var(--dark);
-        }
-
-        .exp-item ul li::before {
-            content: '—';
-            position: absolute;
-            left: 0;
-            color: var(--rule);
-        }
-
-        /* ---------- PUBLICATIONS ---------- */
-        .pub-item {
-            margin-bottom: 11px;
-            padding-bottom: 11px;
-            border-bottom: 1px dotted var(--rule);
-        }
-
-        .pub-item:last-child { border-bottom: none; }
-
-        .pub-item .pub-number {
-            font-family: var(--mono);
-            font-size: .72rem;
-            color: var(--light);
-            letter-spacing: .05em;
-        }
-
-        .pub-item .pub-title {
-            font-size: .93rem;
-            font-weight: 500;
-            line-height: 1.45;
-            font-style: italic;
-            margin: 2px 0 3px;
-        }
-
-        .pub-item .pub-meta {
-            font-size: .8rem;
-            color: var(--mid);
-            line-height: 1.5;
-        }
-
-        .pub-item .pub-meta strong { color: var(--dark); font-weight: 600; }
-
-        /* ---------- SKILLS ---------- */
-        .skills-block { margin-bottom: 9px; }
-
-        .skills-block .skill-label {
-            font-family: var(--mono);
-            font-size: .73rem;
-            letter-spacing: .08em;
-            color: var(--mid);
-            text-transform: uppercase;
-            margin-bottom: 2px;
-        }
-
-        .skills-block .skill-content {
-            font-size: .85rem;
-            line-height: 1.6;
-            color: var(--dark);
-        }
-
-        /* ---------- TWO-COL LAYOUT ---------- */
-        .two-col {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0 30px;
-        }
-
-        /* ---------- TEACHING ---------- */
-        .teach-item { margin-bottom: 10px; }
-
-        .teach-item .t-role {
-            font-size: .9rem;
-            font-weight: 600;
-        }
-
-        .teach-item .t-meta {
-            font-size: .8rem;
-            color: var(--mid);
-        }
-
-        /* ---------- MISC LISTS ---------- */
-        .plain-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .plain-list li {
-            font-size: .85rem;
-            line-height: 1.65;
-            color: var(--dark);
-            padding-left: 1.1em;
-            position: relative;
-        }
-
-        .plain-list li::before {
-            content: '—';
-            position: absolute;
-            left: 0;
-            color: var(--rule);
-        }
-
-        .plain-list li strong { color: var(--black); font-weight: 600; }
-
-        /* ---------- LANGUAGES ---------- */
-        .lang-row {
+        .header-top {
             display: flex;
-            gap: 30px;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
         }
 
-        .lang-item { font-size: .85rem; }
-        .lang-item strong { font-weight: 600; display: block; }
-        .lang-item span { color: var(--mid); font-size: .8rem; }
+        h1 {
+            color: var(--primary-color);
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
 
-        /* ---------- PRINT ---------- */
-        @media print {
-            body { background: white; padding: 0; }
-            .cv {
-                box-shadow: none;
-                padding: 15mm 17mm;
-                max-width: 100%;
+        .subtitle {
+            color: var(--secondary-color);
+            font-size: 13.5px;
+            font-weight: 600;
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-info {
+            text-align: right;
+            font-size: 11.5px;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+
+        .contact-info a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .profile-summary {
+            font-size: 12px;
+            color: var(--text-dark);
+            margin-top: 8px;
+            text-align: justify;
+        }
+
+        /* Fixed Grid Systems per Page */
+        .cv-grid-p1 {
+            display: grid;
+            grid-template-columns: 1fr 44mm; /* Fit content width so left/right margins stay equal */
+            gap: 10mm;
+            flex-grow: 1;
+        }
+
+        .cv-grid-p2 {
+            display: grid;
+            grid-template-columns: 1fr 44mm;
+            gap: 10mm;
+            flex-grow: 1;
+            margin-top: 5mm; /* Safe space margin from top boundaries */
+        }
+
+        .main-column {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .side-column {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        /* Section Rules */
+        section {
+            width: 100%;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 4px;
+            margin-bottom: 8px;
+        }
+
+        /* Experience, Education and Sub items */
+        .item {
+            margin-bottom: 8px;
+        }
+
+        .item:last-child {
+            margin-bottom: 0;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            font-size: 12.5px;
+            margin-bottom: 3px;
+        }
+
+        .item-title {
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .item-org {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .item-date {
+            color: var(--text-light);
+            font-size: 11.5px;
+            white-space: nowrap;
+        }
+
+        .item-desc {
+            font-size: 12px;
+            text-align: justify;
+        }
+
+        .item-desc ul {
+            padding-left: 15px;
+            margin-top: 3px;
+        }
+
+        .item-desc li {
+            margin-bottom: 3px;
+        }
+
+        /* Publications Content Area */
+        .pub-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .pub-item {
+            font-size: 12px;
+            position: relative;
+            padding-left: 22px;
+            text-align: justify;
+            line-height: 1.4;
+        }
+
+        .pub-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        .pub-title {
+            font-weight: 600;
+        }
+
+        .pub-me {
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
+        .pub-journal {
+            font-style: italic;
+            color: var(--text-light);
+        }
+
+        /* Sidebar Elements */
+        .skills-group {
+            margin-bottom: 4px;
+        }
+
+        .skills-group h3 {
+            font-size: 12px;
+            color: var(--secondary-color);
+            margin-bottom: 1px;
+            font-weight: 600;
+        }
+
+        .skills-group p {
+            font-size: 11.5px;
+            line-height: 1.3;
+            text-align: justify;
+        }
+
+        .compact-list {
+            list-style: none;
+            font-size: 11.5px;
+        }
+
+        .compact-list li {
+            margin-bottom: 6px;
+            line-height: 1.35;
+        }
+
+        /* Defensive Footers positioning */
+        .page-footer {
+            position: absolute;
+            bottom: 12mm;
+            left: 20mm;
+            right: 20mm;
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            color: var(--text-light);
+            border-top: 1px solid var(--border-color);
+            padding-top: 6px;
+        }
+
+        /* Screen Fallback View adjustments */
+        @media screen and (max-width: 215mm) {
+            body { padding: 10px 0; }
+            .page {
+                width: 100%;
+                height: auto;
+                margin: 0 0 20px 0;
+                padding: 20px;
             }
-            a { color: inherit !important; border-bottom: none !important; }
-            * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .cv-grid-p1, .cv-grid-p2 {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .page-footer { display: none; }
         }
 
-        @page {
-            size: A4;
-            margin: 0;
+        /* Hard Print Target Lockouts */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .page {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+                height: 297mm;
+                width: 210mm;
+                overflow: hidden;
+            }
         }
     </style>
 </head>
 <body>
-<div class="cv">
 
-    <!-- HEADER -->
-    <header>
-        <h1>Milad Yousefi</h1>
-        <div class="title-line">Computational Researcher · Biostatistics &amp; Systems Biology</div>
-        <div class="contact-row">
-            <a href="mailto:yousefimiladdd@gmail.com">yousefimiladdd@gmail.com</a>
-            <a href="https://scholar.google.com/citations?user=6F2pgMwAAAAJ&hl=en" target="_blank">Google Scholar</a>
-            <a href="https://orcid.org/0009-0006-5790-5144" target="_blank">ORCID: 0009-0006-5790-5144</a>
-        </div>
-    </header>
-
-    <!-- ABOUT -->
-    <section class="about">
-        <div class="section-head">Profile</div>
-        <p>Dedicated computational researcher specializing in the synergistic application of mathematics, data science, and artificial intelligence to biological and healthcare problems. My work spans biostatistics, systems biology, computational neuroscience, and medical AI — transforming complex biological questions into structured computational frameworks and converting diverse biomedical data into actionable clinical insights.</p>
-        <p>I am currently seeking <strong>PhD or Master's positions</strong> in biostatistics, computational biology, or related fields, where I can contribute to rigorous interdisciplinary research and further develop methods at the intersection of mathematics, genomics, and healthcare AI.</p>
-    </section>
-
-    <!-- RESEARCH INTERESTS -->
-    <section>
-        <div class="section-head">Research Interests</div>
-        <div class="interests-grid">
-            <div class="interest-block">
-                <h4>Biostatistics</h4>
-                <p>Survival analysis, longitudinal data, causal inference, statistical genetics, clinical trial design, meta-analysis, Bayesian methods.</p>
+    <div class="page">
+        <header>
+            <div class="header-top">
+                <div>
+                    <h1>Milad Yousefi</h1>
+                    <div class="subtitle">Computational Researcher · Biostatistics & Systems Biology</div>
+                </div>
+                <div class="contact-info">
+                    Email: <a href="mailto:yousefimiladdd@gmail.com">yousefimiladdd@gmail.com</a><br>
+                    Links: <a href="#">Google Scholar</a> | <a href="#">ORCID: 0009-0006-5790-5144</a>
+                </div>
             </div>
-            <div class="interest-block">
-                <h4>Systems Biology</h4>
-                <p>Network analysis, multi-omics integration, gene regulatory networks, metabolic modelling, pathway analysis.</p>
+            <p class="profile-summary">
+                Dedicated computational researcher specializing in the synergistic application of mathematics, data science, and artificial intelligence to biological and healthcare problems. My work spans biostatistics, systems biology, computational neuroscience, and medical AI—transforming complex biological questions into structured computational frameworks and converting diverse biomedical data into actionable clinical insights. Currently seeking PhD or Master's positions to contribute to rigorous interdisciplinary genomics and healthcare AI research.
+            </p>
+        </header>
+
+        <div class="cv-grid-p1">
+            <div class="main-column">
+                <section>
+                    <h2>Research & Laboratory Experience</h2>
+                    
+                    <div class="item">
+                        <div class="item-header">
+                            <div>
+                                <span class="item-title">Visiting Researcher</span> — <span class="item-org">Canan Atilgan Lab</span>
+                            </div>
+                            <span class="item-date">Current</span>
+                        </div>
+                        <div class="item-desc">
+                            Sabancı University, Istanbul, Türkiye. Contributing to advanced molecular dynamics, computational biology pipelines, and structural bioinformatics frameworks.
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="item-header">
+                            <div>
+                                <span class="item-title">Research Collaborator</span> — <span class="item-org">Population Genetics & Biostatistics</span>
+                            </div>
+                            <span class="item-date">Jan 2021 – Dec 2023</span>
+                        </div>
+                        <div class="item-desc">
+                            Tabriz University of Medical Sciences
+                            <ul>
+                                <li>Comprehensive statistical analysis of HLA allele frequencies in Azeri and Kurd populations using 6 years of clinical datasets (N &gt; 5,000).</li>
+                                <li>Applied chi-square tests, Fisher's exact tests, Hardy–Weinberg equilibrium, and linkage disequilibrium mapping.</li>
+                                <li>Built reproducible R and Python pipelines for automated data cleaning, structural quality control, and population genetics evaluation.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="item-header">
+                            <div>
+                                <span class="item-title">Undergraduate Research Assistant</span> — <span class="item-org">Computational Neuroscience</span>
+                            </div>
+                            <span class="item-date">Sep 2022 – Jul 2023</span>
+                        </div>
+                        <div class="item-desc">
+                            Mathematical Neuroscience Lab, Tabriz University | Supervisor: Dr. Fariba Bahrami
+                            <ul>
+                                <li>Developed novel fuzzy logic-based models for input current conversion in LIF neuron models, enhancing baseline biological realism by 35% over traditional static systems.</li>
+                                <li>Executed simulations in Python/MATLAB; validated variants against empirical neuronal spike trains.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="item-header">
+                            <div>
+                                <span class="item-title">Independent Researcher</span> — <span class="item-org">Healthcare AI & Medical Informatics</span>
+                            </div>
+                            <span class="item-date">Sep 2021 – Present</span>
+                        </div>
+                        <div class="item-desc">
+                            <ul>
+                                <li><strong>Stroke Prediction:</strong> Built ML architectures (Random Forest, XGBoost, MLPs) hitting an 87% predictive accuracy and 0.91 AUC-ROC.</li>
+                                <li><strong>Lung Cancer Classification:</strong> Built Deep Learning pipelines (U-Net, ResNet) for CT nodule segmentation yielding 92% sensitivity and 88% specificity.</li>
+                                <li><strong>Thyroid Cancer Radiomics:</strong> Handled extraction matrices for 400+ ultrasound features utilizing downstream feature selection algorithms for diagnostic optimization.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Education</h2>
+                    <div class="item">
+                        <div class="item-header">
+                            <div>
+                                <span class="item-title">Bachelor of Science in Applied Mathematics</span>
+                                <span class="item-org">| Honours</span>
+                            </div>
+                            <span class="item-date">Sep 2019 – Jul 2023</span>
+                        </div>
+                        <div class="item-desc">
+                            Tabriz University, Tabriz, Iran &nbsp;•&nbsp; <strong>GPA: 17.43/20 (3.58/4.00)</strong><br>
+                            <em>Thesis:</em> "An Investigation into Fuzzy Modeling Techniques for Input Current Conversion in LIF Neuron Models" — Supervisor: Dr. Fariba Bahrami.<br>
+                            <span style="font-size:11px; color:var(--text-light); line-height: 1.3; display: block; margin-top: 4px;"><strong>Coursework:</strong> Advanced Calculus, Linear Algebra, Mathematical Statistics, Differential Equations, Probability, Numerical Analysis, Fuzzy Mathematics, Data Structures, Stochastic Processes, Advanced Bioinformatics.</span>
+                        </div>
+                    </div>
+                </section>
             </div>
-            <div class="interest-block">
-                <h4>Computational Neuroscience</h4>
-                <p>Neural modelling (LIF), fuzzy inference systems, retinal biomarkers, neurodegenerative disease.</p>
-            </div>
-            <div class="interest-block">
-                <h4>Healthcare AI &amp; Informatics</h4>
-                <p>Medical image analysis, predictive modelling, clinical decision support, radiomics, precision medicine.</p>
-            </div>
-        </div>
-    </section>
 
-    <!-- EDUCATION -->
-    <section>
-        <div class="section-head">Education</div>
-        <div class="edu-item">
-            <div class="degree">Bachelor of Science in Applied Mathematics <em>— Graduated with Honours</em></div>
-            <div class="institution-line">Tabriz University, Tabriz, Iran &nbsp;|&nbsp; September 2019 – July 2023 &nbsp;|&nbsp; GPA: 17.43/20 (3.58/4.00)</div>
-            <div class="details">
-                <strong>Undergraduate Thesis:</strong> <em>"An Investigation into Fuzzy Modeling Techniques for Input Current Conversion in LIF Neuron Models"</em> — Supervisor: Dr. Fariba Bahrami. Developed novel fuzzy inference systems to model non-linear input-output relationships in Leaky Integrate-and-Fire neurons, significantly improving biological realism in computational simulations.<br>
-                <strong>Relevant Coursework:</strong> Advanced Calculus, Linear Algebra, Differential Equations, Probability &amp; Statistics, Mathematical Statistics, Numerical Analysis, Operations Research, Fuzzy Mathematics, Data Structures &amp; Algorithms, Database Systems, Stochastic Processes, Advanced Bioinformatics.
-            </div>
-        </div>
-    </section>
+            <div class="side-column">
+                <section>
+                    <h2>Research Interests</h2>
+                    <div class="skills-group">
+                        <h3>Biostatistics</h3>
+                        <p>Survival analysis, longitudinal metrics, causal inference, statistical genetics, clinical trials, Bayesian models.</p>
+                    </div>
+                    <div class="skills-group">
+                        <h3>Systems Biology</h3>
+                        <p>Network analysis, multi-omics integration, gene regulatory networks, metabolic pathways modeling.</p>
+                    </div>
+                    <div class="skills-group">
+                        <h3>Computational Neuroscience</h3>
+                        <p>Neural modelling (LIF), fuzzy inference systems, retinal biomarkers, neurodegenerative mapping.</p>
+                    </div>
+                    <div class="skills-group">
+                        <h3>Healthcare AI</h3>
+                        <p>Medical image segmentation, predictive modeling, clinical decision support, radiomics features.</p>
+                    </div>
+                </section>
 
-    <!-- PUBLICATIONS -->
-    <section>
-        <div class="section-head">Publications</div>
-
-        <div class="pub-item">
-            <div class="pub-number">06</div>
-            <div class="pub-title">The Effects of Optic Nerve Sheath Fenestration on Visual Function and OCT Metrics in Idiopathic Intracranial Hypertension: A Retrospective Study</div>
-            <div class="pub-meta">Farabi, S., <strong>Yousefi, M.</strong>, Fekrazad, S., Asiayi, A., Nabie, R., Kostic, M. &nbsp;·&nbsp; <em>Frontiers in Ophthalmology</em>, Vol. 6, 1752218 (Frontiers).</div>
-        </div>
-
-        <div class="pub-item">
-            <div class="pub-number">05</div>
-            <div class="pub-title">An Investigation into Fuzzy Modeling Techniques for Input Current Conversion in LIF Neuron Models</div>
-            <div class="pub-meta"><strong>Yousefi, M.</strong>, Bahrami, F., Farabi, S. &nbsp;·&nbsp; <em>Manuscript in Preparation</em>.</div>
-        </div>
-
-        <div class="pub-item">
-            <div class="pub-number">04</div>
-            <div class="pub-title">HLA Distribution of Azeri and Kurd Ethnic Groups: A 6-Year Investigation of Northwest Iran</div>
-            <div class="pub-meta"><strong>Yousefi, M.</strong>, Shahmohammadi-Farid, S., Farabi, S., Mandalo, L. &nbsp;·&nbsp; <em>Submitted to Immunogenetics</em>.</div>
-        </div>
-
-        <div class="pub-item">
-            <div class="pub-number">03</div>
-            <div class="pub-title">Advancements in Radiomics and Artificial Intelligence for Thyroid Cancer Diagnosis</div>
-            <div class="pub-meta"><strong>Yousefi, M.</strong>, Maleki, S.F., Jafarizadeh, A., Ahmadpour Youshanlui, M., et al. &nbsp;·&nbsp; <em>Submitted to Nature Communications</em>.</div>
-        </div>
-
-        <div class="pub-item">
-            <div class="pub-number">02</div>
-            <div class="pub-title">Retinal Imaging and Alzheimer's Disease: An Artificial Intelligence-Based Future</div>
-            <div class="pub-meta"><strong>Yousefi, M.</strong>, Ashayeri, H., Jafarizadeh, A., Farhadi, F., Javadzadeh, A. (2023). &nbsp;·&nbsp; <em>Neuroscience Informatics</em>.</div>
-        </div>
-
-        <div class="pub-item">
-            <div class="pub-number">01</div>
-            <div class="pub-title">Artificial Intelligence for Multiple Sclerosis Management Using Retinal Images: Pearl, Peaks, and Pitfalls</div>
-            <div class="pub-meta"><strong>Yousefi, M.</strong>, Lim, C.P., Farabi, S. (2023). &nbsp;·&nbsp; <em>Journal of Medical Artificial Intelligence</em>.</div>
-        </div>
-    </section>
-
-    <!-- RESEARCH EXPERIENCE -->
-    <section>
-        <div class="section-head">Research &amp; Laboratory Experience</div>
-
-        <div class="exp-item">
-            <div class="role">Undergraduate Research Assistant — Computational Neuroscience</div>
-            <div class="where-when">Mathematical Neuroscience Lab, Tabriz University &nbsp;|&nbsp; Sep 2022 – Jul 2023 &nbsp;|&nbsp; Supervisor: Dr. Fariba Bahrami</div>
-            <ul>
-                <li>Developed fuzzy logic-based models for input current conversion in LIF neuron models, enhancing biological realism by 35% vs. traditional methods.</li>
-                <li>Implemented simulations in Python and MATLAB, validating against experimental neuronal spike train and membrane potential data.</li>
-                <li>Investigated AI approaches for Alzheimer's detection via retinal imaging biomarkers in collaboration with clinical neurologists.</li>
-            </ul>
-        </div>
-
-        <div class="exp-item">
-            <div class="role">Research Collaborator — Population Genetics &amp; Biostatistics</div>
-            <div class="where-when">HLA Distribution Analysis Project, Tabriz University of Medical Sciences &nbsp;|&nbsp; Jan 2021 – Dec 2023</div>
-            <ul>
-                <li>Comprehensive statistical analysis of HLA allele frequencies in Azeri and Kurd populations using 6 years of clinical data (N &gt; 5,000).</li>
-                <li>Applied chi-square tests, Fisher's exact tests, Hardy–Weinberg equilibrium analysis, and linkage disequilibrium analysis.</li>
-                <li>Built R and Python pipelines for automated data cleaning, quality control, and statistical analysis of immunogenetic data.</li>
-            </ul>
-        </div>
-
-        <div class="exp-item">
-            <div class="role">Independent Researcher — Healthcare AI &amp; Medical Informatics</div>
-            <div class="where-when">Multiple Collaborative Projects &nbsp;|&nbsp; Sep 2021 – Present</div>
-            <ul>
-                <li><strong>Stroke Prediction:</strong> ML models (Random Forest, XGBoost, Neural Networks) — 87% accuracy, 0.91 AUC-ROC.</li>
-                <li><strong>Lung Cancer Classification:</strong> Deep learning (U-Net, ResNet) for CT nodule segmentation — 92% sensitivity, 88% specificity.</li>
-                <li><strong>Thyroid Cancer Radiomics:</strong> 400+ features extracted from ultrasound; feature selection and ML for improved diagnostic accuracy.</li>
-                <li><strong>Clinical Trial Analysis:</strong> Statistical comparison of Gabapentin vs. Cinnarizine for tinnitus (paired t-tests, effect sizes).</li>
-                <li><strong>MS Biomarkers:</strong> Literature review on retinal imaging AI for MS diagnosis and progression monitoring.</li>
-            </ul>
-        </div>
-
-        <div class="exp-item">
-            <div class="role">Laboratory Experience (Wet Lab)</div>
-            <div class="where-when">Tabriz University &amp; Collaborating Labs &nbsp;|&nbsp; 2021 – 2023</div>
-            <ul>
-                <li>Cell culture (aseptic technique, passaging, cryopreservation); flow cytometry (sample prep, viability, apoptosis, cell cycle analysis).</li>
-                <li>MTT and trypan blue viability assays; DNA/RNA extraction, PCR, gel electrophoresis; immunohistochemistry and immunofluorescence.</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- TECHNICAL SKILLS -->
-    <section>
-        <div class="section-head">Technical Skills</div>
-
-        <div class="skills-block">
-            <div class="skill-label">Statistical Methods</div>
-            <div class="skill-content">Hypothesis testing (t-tests, ANOVA, chi-square, non-parametric) · Regression (linear, logistic, Poisson, Cox, mixed-effects) · Survival analysis (Kaplan–Meier, log-rank) · Multivariate analysis (PCA, discriminant, factor) · Bayesian statistics · Meta-analysis · Experimental design</div>
-        </div>
-
-        <div class="skills-block">
-            <div class="skill-label">Programming &amp; Software</div>
-            <div class="skill-content">Python (NumPy, Pandas, SciPy, Statsmodels, Matplotlib, Seaborn — Advanced) · R (dplyr, ggplot2, survival, Bioconductor — Advanced) · MATLAB (signal processing, numerical analysis — Intermediate) · SQL (MySQL, PostgreSQL) · C++ (OOP, algorithms) · Git / GitHub</div>
-        </div>
-
-        <div class="skills-block">
-            <div class="skill-label">Machine Learning &amp; AI</div>
-            <div class="skill-content">Frameworks: TensorFlow, PyTorch, Keras, Scikit-learn, XGBoost · Deep learning: CNN, RNN, LSTM, U-Net, ResNet, Autoencoders, Transfer Learning · Classical ML: Random Forest, SVM, Gradient Boosting, Ensemble Methods · Computer vision: medical image segmentation, radiomics, feature extraction · Model evaluation: cross-validation, ROC/AUC, calibration</div>
-        </div>
-
-        <div class="skills-block">
-            <div class="skill-label">Bioinformatics &amp; Systems Biology</div>
-            <div class="skill-content">Sequence analysis (BLAST, alignment) · Genomics (variant calling, population genetics, HLA typing) · Pathway analysis (GSEA, network analysis) · Systems modelling (ODEs, metabolic/regulatory networks) · Multi-omics integration</div>
-        </div>
-
-        <div class="skills-block">
-            <div class="skill-label">Mathematical Modelling</div>
-            <div class="skill-content">Linear algebra (SVD, PCA) · Differential equations and dynamical systems · Optimization (linear, nonlinear, gradient methods) · Fuzzy logic and inference systems · Numerical methods</div>
-        </div>
-    </section>
-
-    <!-- TEACHING -->
-    <section>
-        <div class="section-head">Teaching Experience</div>
-        <div class="two-col">
-            <div class="teach-item">
-                <div class="t-role">Teaching Assistant — Linear Optimization</div>
-                <div class="t-meta">Tabriz University &nbsp;|&nbsp; 2022 &nbsp;|&nbsp; Instructor: Dr. Vakili<br>Weekly problem sessions, exam preparation, supplementary materials.</div>
-            </div>
-            <div class="teach-item">
-                <div class="t-role">Teaching Assistant — Combinatorics</div>
-                <div class="t-meta">Tabriz University &nbsp;|&nbsp; 2021 &nbsp;|&nbsp; Instructor: Dr. Behmaram<br>Concept sessions, grading, supplementary learning materials.</div>
-            </div>
-            <div class="teach-item">
-                <div class="t-role">Teaching Assistant — Differential Equations</div>
-                <div class="t-meta">Tabriz University &nbsp;|&nbsp; 2020 &nbsp;|&nbsp; Instructor: Dr. Bahrami<br>Problem-solving sessions, real-world project design, individualized support.</div>
+                <section>
+                    <h2>Technical Skills</h2>
+                    <div class="skills-group">
+                        <h3>Statistical Methods</h3>
+                        <p>Hypothesis testing, Regression (Cox, Mixed-effects, Poisson), Survival analysis (KM, Log-rank), PCA, Factor analysis.</p>
+                    </div>
+                    <div class="skills-group">
+                        <h3>Programming</h3>
+                        <p>Python (NumPy, Pandas, SciPy, Statsmodels, Matplotlib), R (dplyr, ggplot2, Bioconductor), MATLAB, SQL, C++, Git/GitHub.</p>
+                    </div>
+                    <div class="skills-group">
+                        <h3>Machine Learning</h3>
+                        <p>TensorFlow, PyTorch, Scikit-learn, XGBoost, CNNs, LSTMs, U-Net, ResNet, Transfer Learning, ROC/AUC curves.</p>
+                    </div>
+                    <div class="skills-group">
+                        <h3>Bioinformatics</h3>
+                        <p>Sequence Analysis (BLAST), Genomics (Variant calling, HLA typing), Pathway/GSEA metrics, Systems modeling (ODEs).</p>
+                    </div>
+                </section>
             </div>
         </div>
-    </section>
-
-    <!-- PROFESSIONAL SKILLS -->
-    <section>
-        <div class="section-head">Professional Competencies</div>
-        <ul class="plain-list">
-            <li><strong>Communication:</strong> Scientific writing, manuscript preparation, data visualization, presenting technical concepts to diverse audiences.</li>
-            <li><strong>Problem Solving:</strong> Deconstructing complex biological challenges, creative methodological design, cross-domain method adaptation.</li>
-            <li><strong>Collaboration:</strong> Effective multidisciplinary teamwork, mentoring junior researchers, open to feedback and iterative development.</li>
-            <li><strong>Research Practice:</strong> Rapid assimilation of new tools, critical literature evaluation, reproducible and transparent research workflows.</li>
-        </ul>
-    </section>
-
-    <!-- CERTIFICATIONS -->
-    <section>
-        <div class="section-head">Certifications &amp; Professional Development</div>
-        <ul class="plain-list">
-            <li><strong>Deep Learning Specialization</strong> — deeplearning.ai (all 5 courses completed)</li>
-            <li><strong>Machine Learning</strong> — Stanford University / Coursera</li>
-            <li><strong>Advanced Bioinformatics</strong> — Genomic data analysis and structural bioinformatics</li>
-            <li><strong>Computational Neuroscience</strong> — Neural modelling and dynamical systems</li>
-        </ul>
-    </section>
-
-    <!-- LANGUAGES -->
-    <section>
-        <div class="section-head">Languages</div>
-        <div class="lang-row">
-            <div class="lang-item"><strong>Persian (Farsi)</strong><span>Native</span></div>
-            <div class="lang-item"><strong>Azerbaijani (Turkish)</strong><span>Native</span></div>
-            <div class="lang-item"><strong>English</strong><span>Professional — academic writing &amp; technical communication</span></div>
+        
+        <div class="page-footer">
+            <span></span>
+            <span>Page 1 of 2</span>
         </div>
-    </section>
+    </div>
 
-    <!-- REFERENCES -->
-    <section>
-        <div class="section-head">References</div>
-        <p style="font-size:.85rem; color: var(--mid);">Available upon request.</p>
-    </section>
 
-</div>
+    <div class="page">
+        <div class="cv-grid-p2">
+            <div class="main-column">
+                <section>
+                    <h2>Publications</h2>
+                    <div class="pub-list">
+                        <div class="pub-item">
+                            <span class="pub-number">06</span>
+                            <span class="pub-title">The Effects of Optic Nerve Sheath Fenestration on Visual Function and OCT Metrics in Idiopathic Intracranial Hypertension: A Retrospective Study</span><br>
+                            <span class="pub-authors">Farabi, S., <span class="pub-me">Yousefi, M.</span>, Fekrazad, S., Asiayi, A., Nabie, R., Kostic, M.</span> &middot; <span class="pub-journal">Frontiers in Ophthalmology, Vol. 6, 1752218 (Frontiers).</span>
+                        </div>
+                        
+                        <div class="pub-item">
+                            <span class="pub-number">05</span>
+                            <span class="pub-title">An Investigation into Fuzzy Modeling Techniques for Input Current Conversion in LIF Neuron Models</span><br>
+                            <span class="pub-authors"><span class="pub-me">Yousefi, M.</span>, Bahrami, F., Farabi, S.</span> &middot; <span class="pub-journal">Manuscript in Preparation.</span>
+                        </div>
+
+                        <div class="pub-item">
+                            <span class="pub-number">04</span>
+                            <span class="pub-title">HLA Distribution of Azeri and Kurd Ethnic Groups: A 6-Year Investigation of Northwest Iran</span><br>
+                            <span class="pub-authors"><span class="pub-me">Yousefi, M.</span>, Shahmohammadi-Farid, S., Farabi, S., Mandalo, L.</span> &middot; <span class="pub-journal">Submitted to Immunogenetics.</span>
+                        </div>
+
+                        <div class="pub-item">
+                            <span class="pub-number">03</span>
+                            <span class="pub-title">Advancements in Radiomics and Artificial Intelligence for Thyroid Cancer Diagnosis</span><br>
+                            <span class="pub-authors"><span class="pub-me">Yousefi, M.</span>, Maleki, S.F., Jafarizadeh, A., Ahmadpour Youshanlui, M., et al.</span> &middot; <span class="pub-journal">Submitted to Nature Communications.</span>
+                        </div>
+
+                        <div class="pub-item">
+                            <span class="pub-number">02</span>
+                            <span class="pub-title">Retinal Imaging and Alzheimer's Disease: An Artificial Intelligence-Based Future</span><br>
+                            <span class="pub-authors"><span class="pub-me">Yousefi, M.</span>, Ashayeri, H., Jafarizadeh, A., Farhadi, F., Javadzadeh, A. (2023).</span> &middot; <span class="pub-journal">Neuroscience Informatics.</span>
+                        </div>
+
+                        <div class="pub-item">
+                            <span class="pub-number">01</span>
+                            <span class="pub-title">Artificial Intelligence for Multiple Sclerosis Management Using Retinal Images: Pearls, Peaks, and Pitfalls</span><br>
+                            <span class="pub-authors"><span class="pub-me">Yousefi, M.</span>, Lim, C.P., Farabi, S. (2023).</span> &middot; <span class="pub-journal">Journal of Medical Artificial Intelligence.</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Additional Research Experience (Wet Lab)</h2>
+                    <div class="item">
+                        <div class="item-header">
+                            <div><span class="item-title">Tabriz University &amp; Collaborating Laboratories</span></div>
+                            <span class="item-date">2021 – 2023</span>
+                        </div>
+                        <div class="item-desc">
+                            <ul>
+                                <li><strong>Cell Culture:</strong> Maintained sterile execution pipelines, passage protocols, and complex cryopreservation.</li>
+                                <li><strong>Assays &amp; Flow Cytometry:</strong> Run routine sample preps tracking apoptosis, viability via MTT/Trypan Blue and cell cycle checkpoints.</li>
+                                <li><strong>Molecular Targets:</strong> Executed DNA/RNA extraction protocols, classic PCR setups, gel electrophoresis, IHC, and structural immunofluorescence mapping.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Teaching Experience</h2>
+                    <div class="item" style="margin-bottom: 4px;">
+                        <div class="item-header">
+                            <div><strong>Teaching Assistant — Linear Optimization</strong> &middot; <span style="color: var(--text-light)">Dr. Vakili</span></div>
+                            <span class="item-date">2022</span>
+                        </div>
+                    </div>
+                    <div class="item" style="margin-bottom: 4px;">
+                        <div class="item-header">
+                            <div><strong>Teaching Assistant — Combinatorics</strong> &middot; <span style="color: var(--text-light)">Dr. Behmaram</span></div>
+                            <span class="item-date">2021</span>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-header">
+                            <div><strong>Teaching Assistant — Differential Equations</strong> &middot; <span style="color: var(--text-light)">Dr. Bahrami</span></div>
+                            <span class="item-date">2020</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="side-column">
+                <section>
+                    <h2>Certifications</h2>
+                    <ul class="compact-list">
+                        <li><strong>Deep Learning Specialization</strong><br><span style="color: var(--text-light)">deeplearning.ai (5 Courses)</span></li>
+                        <li><strong>Machine Learning</strong><br><span style="color: var(--text-light)">Stanford University / Coursera</span></li>
+                        <li><strong>Advanced Bioinformatics</strong><br><span style="color: var(--text-light)">Genomic &amp; Structural Analysis</span></li>
+                        <li><strong>Computational Neuroscience</strong><br><span style="color: var(--text-light)">Neural Modelling Systems</span></li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Professional Competencies</h2>
+                    <ul class="compact-list">
+                        <li><strong>Communication:</strong> Technical writing, clean data visualization, and interdisciplinary translation.</li>
+                        <li><strong>Problem Solving:</strong> Formulating analytical frameworks for complex clinical and biological phenomena.</li>
+                        <li><strong>Collaboration:</strong> Thriving in integrated medical-engineering cohorts; eager to incorporate active feedback metrics.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Languages</h2>
+                    <ul class="compact-list">
+                        <li><strong>Persian (Farsi):</strong> Native</li>
+                        <li><strong>Azerbaijani (Turkish):</strong> Native</li>
+                        <li><strong>English:</strong> Professional (Academic)</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>References</h2>
+                    <p style="font-size: 11.5px; color: var(--text-light); font-style: italic;">Available upon request.</p>
+                </section>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <span></span>
+            <span>Page 2 of 2</span>
+        </div>
+    </div>
+
 </body>
 </html>
